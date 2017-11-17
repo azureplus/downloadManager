@@ -9,14 +9,14 @@
 Pod::Spec.new do |s|
 
   s.name         = "DownloadManager"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A short description of DownloadManager"
   s.homepage     = "https://github.com/liudiange/downloadManager"
   s.license      = "MIT"
   s.author             = { "diange Liu" => "shaoyeliudiange@163.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/liudiange/downloadManager.git", :tag => "v0.0.1" }
-  s.source_files  = 'DownloadManages/*'
+  s.source       = { :git => "https://github.com/liudiange/downloadManager.git", :tag => "0.0.2" }
+  s.source_files  = "DownloadManagers/*"
   s.framework  = "UIKit"
   s.dependency "AFNetworking", "~> 3.1.0"
   
