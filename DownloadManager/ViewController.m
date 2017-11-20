@@ -65,7 +65,7 @@ static NSString * const CELL_ID = @"cell_id";
  *  取消全部
  */
 - (IBAction)cancleAllAction:(UIButton *)sender {
-    [[MiguDowmloadBaseManager shareManager] cancelAllSong];
+    [[MiguDowmloadBaseManager shareManager] cancelAllRequest];
     
 }
 /**
@@ -73,7 +73,7 @@ static NSString * const CELL_ID = @"cell_id";
  *  取消某一首歌曲
  */
 - (IBAction)cancleOneAction:(UIButton *)sender {
-    [[MiguDowmloadBaseManager shareManager] cancelWithSong:TEST_URL];
+    [[MiguDowmloadBaseManager shareManager] cancelWithUrl:TEST_URL];
 }
 /**
  *
@@ -82,7 +82,7 @@ static NSString * const CELL_ID = @"cell_id";
 
 - (IBAction)suspendAllAction:(id)sender {
     
-    [[MiguDowmloadBaseManager shareManager] suspendAllSong];
+    [[MiguDowmloadBaseManager shareManager] suspendAllRequest];
 }
 /**
  *
@@ -96,7 +96,7 @@ static NSString * const CELL_ID = @"cell_id";
  *  恢复全部
  */
 - (IBAction)resumeAllAction:(id)sender {
-    [[MiguDowmloadBaseManager shareManager] resumeAllSong];
+    [[MiguDowmloadBaseManager shareManager] resumeAllRequest];
 }
 /**
  *
@@ -104,7 +104,7 @@ static NSString * const CELL_ID = @"cell_id";
  */
 - (IBAction)resumeOneAction:(id)sender {
     
-    [[MiguDowmloadBaseManager shareManager] resumeWithSong:TEST_URL];
+    [[MiguDowmloadBaseManager shareManager] resumeWithUrl:TEST_URL];
 }
 #pragma mark - datasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

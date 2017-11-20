@@ -268,7 +268,7 @@
  *
  *   暂停所有的歌曲
  */
-- (void)suspendAllSong{
+- (void)suspendAllRequest{
     [_lock lock];
     for (MiguDownloadItem *item in _downloadArray) {
         if (item.downloadStatus == MiguDownloadStatusDownloading || item.downloadStatus == MiguDownloadStatusWaiting || item.downloadStatus == MiguDownloadStatusError) {
@@ -284,7 +284,7 @@
  *
  *   恢复下载一首歌曲
  */
-- (void)resumeWithSong:(NSString *)url{
+- (void)resumeWithUrl:(NSString *)url{
     if (url.length == 0) {
         return;
     }
@@ -310,7 +310,7 @@
  *
  *   恢复所有暂停的歌曲
  */
-- (void)resumeAllSong{
+- (void)resumeAllRequest{
    
     [_lock lock];
     for (MiguDownloadItem *item in _downloadArray) {
@@ -326,7 +326,7 @@
  *
  *   取消一首歌曲
  */
-- (void)cancelWithSong:(NSString *)url{
+- (void)cancelWithUrl:(NSString *)url{
     
     if (url.length == 0) {
         return;
@@ -351,7 +351,7 @@
  *
  *   取消所有歌曲
  */
-- (void)cancelAllSong{
+- (void)cancelAllRequest{
     
     [_lock lock];
     for (MiguDownloadItem *item in _downloadArray) {
