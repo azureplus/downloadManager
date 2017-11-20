@@ -12,7 +12,9 @@
 - 可以恢复全部下载
 - 支持断点续传
 ## 安装
-- 只需要将 LDGDownloadManager拖入工程中，目前还没有时间弄cocoapod
+- 需要将 DownloadManager拖入工程中
+- cocoapod pod 'DownloadManager' ~>'0.0.2'
+- 注意macos 暂时不支持cocoapod 
 ## 使用
 ````objc
 1.开始下载
