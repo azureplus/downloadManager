@@ -18,7 +18,9 @@
 - 注意macos 暂时不支持cocoapod 
 ## 使用
 ````objc
-1.开始下载
+1.开始下载(单一)
+[[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0"];
+2.批量下载
 NSArray *list = @[
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0",
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63880300430&ua=Mac_sst&version=1.0",
@@ -31,19 +33,19 @@ NSArray *list = @[
     }
 也可以
 [[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"];
-2.暂停全部
- [[MiguDowmloadBaseManager shareManager] suspendAllSong];
-3.暂停某一首
+3.暂停全部
+ [[MiguDowmloadBaseManager shareManager] suspendAllRequest];
+4.暂停某一首
 [[MiguDowmloadBaseManager shareManager] suspendWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"];
-4.取消全部
+5.取消全部
  [[MiguDowmloadBaseManager shareManager] cancelAllSong];
-5.取消某一首歌曲
+6.取消某一首歌曲
  [[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"];
-6.恢复所有的歌曲
- [[MiguDowmloadBaseManager shareManager] resumeAllSong];
-7.恢复一首歌曲
+7.恢复所有的歌曲
+ [[MiguDowmloadBaseManager shareManager] resumeAllRequest];
+8.恢复一首歌曲
  [[MiguDowmloadBaseManager shareManager] resumeWithSong:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"];
-8.修改最大的下载的任务数量
+9.修改最大的下载的任务数量
  全局搜索 MAXTASK_COUNT 修改其值  默认最大任务数量是 3
 ````
 
