@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "MiguDowmloadBaseManager.h"
 #import "downloadCell.h"
+
+// 这个链接是第三首歌曲的链接
 #define  TEST_URL @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6005970S6G0&ua=Mac_sst&version=1.0"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -28,26 +30,62 @@ static NSString * const CELL_ID = @"cell_id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 获得数据源
+    [self getData];
+    // 创建tableview
+    [self setUpTableView];
+    // 创建观察者
+    [self addObseerverAction];
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if ([MiguDowmloadBaseManager shareManager].downloadArray.count == 0) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"歌曲已经都下载完了" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+}
+#pragma mark - 方法的响应
+
+/**
+ *
+ *  创建tabkeivew
+ */
+- (void)setUpTableView {
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"downloadCell" bundle:nil] forCellReuseIdentifier:CELL_ID];
+    [self.tableView reloadData];
+}
+/**
+ *
+ *  获得数据
+ */
+- (void)getData {
+    
     NSArray *list = @[
-                     @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0",
-                     @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63880300430&ua=Mac_sst&version=1.0",
-                     @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6005970S6G0&ua=Mac_sst&version=1.0",
-                     @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63273401896&ua=Mac_sst&version=1.0",
-                     @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"
-                     ];
+                      @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0",
+                      @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63880300430&ua=Mac_sst&version=1.0",
+                      @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6005970S6G0&ua=Mac_sst&version=1.0",
+                      @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63273401896&ua=Mac_sst&version=1.0",
+                      @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"
+                      ];
     for (NSString *downloadUrl in list) {
         [[MiguDowmloadBaseManager shareManager] downloadWithUrl:downloadUrl];
     }
     [self.dataArray addObjectsFromArray:[MiguDowmloadBaseManager shareManager].downloadArray];
-    [self.tableView reloadData];
+}
+/**
+ *
+ *  添加通知观察者
+ */
+- (void)addObseerverAction {
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeAction:) name:DownloadFinish object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeAction:) name:CancelAllSong object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeAction:) name:CancelOneSong object:nil];
 }
-#pragma mark - 方法的响应
-
 /**
  *
  *  更新ui
