@@ -38,7 +38,7 @@ NSArray *list = @[
 4.暂停某一首
 [[MiguDowmloadBaseManager shareManager] suspendWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"];
 5.取消全部
- [[MiguDowmloadBaseManager shareManager] cancelAllSong];
+ [[MiguDowmloadBaseManager shareManager] cancelAllRequest];
 6.取消某一首歌曲
  [[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"];
 7.恢复所有的歌曲
