@@ -1,5 +1,5 @@
 # downloadManager
-下载管理器，只要传递下载的url来进行下载，支持ios 和macos  Download Manager, as long as the URL passed to download download, support ios and macos
+下载管理器，只要传递下载的url来进行下载，支持ios 和macos      Download Manager, as long as the URL passed to download download, support ios and macos
  
 ## 下载管理器实现的功能：Download Manager to achieve the function:
 - 支持断点续传  Support HTTP
