@@ -1,5 +1,6 @@
 # downloadManager
-![] (http://upload-images.jianshu.io/upload_images/259-0ad0d0bfc1c608b6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![] (http://github.com/liudiange/downloadManager/)
+
 下载管理器，只要传递下载的url来进行下载，支持ios 和macos      （Download Manager, as long as the URL passed to download download, support ios and macos）
  
 ## 下载管理器实现的功能：(Download Manager to achieve the function:)
