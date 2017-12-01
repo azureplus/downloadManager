@@ -83,7 +83,10 @@
     if (![fileManager fileExistsAtPath:cachePath]) {
         [fileManager createDirectoryAtPath:cachePath withIntermediateDirectories:YES attributes:nil error:nil];
     }
-    cachePath = [cachePath stringByAppendingPathComponent:response.suggestedFilename];
+    // 方案一 用服务建议的方法命名
+//    cachePath = [cachePath stringByAppendingPathComponent:response.suggestedFilename];
+    // 方案二 自己用md5 或者其他的方式加密命名
+    cachePath = [cachePath stringByAppendingPathComponent:[[[downloadUrl dataUsingEncoding:NSUTF8StringEncoding] tk_MD5HashString] stringByAppendingString:@".download"]];
     if (![fileManager fileExistsAtPath:cachePath]) {
         [fileManager createFileAtPath:cachePath contents:nil attributes:nil];
     }
@@ -122,9 +125,14 @@
         item.downloadStatus = MiguDownloadStatusWaiting;
         item.progress = 0.0;
         item.temPath = [self getTemPath:downloadUrl];
+        // 方案二需要这样写
+        item.cachePath = [self getCache:downloadUrl withResponse:nil];
         item.requestMethod = @"GET";
         item.paramDic = nil;
-        [self.downloadArray addObject:item];
+        // 已经下载的就不用下载了
+        if ([[NSFileManager defaultManager] attributesOfItemAtPath:item.cachePath error:nil].fileSize <= 0) {
+          [self.downloadArray addObject:item];
+        }
     }
     // 设置最大线程来进行下载任务
     [self checkDownload];
