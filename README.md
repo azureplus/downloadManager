@@ -48,6 +48,9 @@ NSArray *list = @[
 9.修改最大的下载的任务数量 (Modify the maximum number of downloaded tasks)
  全局搜索 MAXTASK_COUNT 修改其值  默认最大任务数量是 3   (Global search MAXTASK_COUNT modify the value of the default maximum number of tasks is 3)
 ````
+##期待
+- 有什么bug或者我不满足的需求，欢迎 Issues我
+- 请大神给我指正和建议，我将不盛荣幸。
 
  
 
