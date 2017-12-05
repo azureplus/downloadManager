@@ -1,4 +1,6 @@
 # downloadManager
+![image](https://github.com/liudiange/downloadManager/blob/master/Simulator%20Screen%20Shot%20-%20iPhone%206s%20-%202017-12-01%20at%2010.03.44.png)
+
 下载管理器，只要传递下载的url来进行下载，支持ios 和macos      （Download Manager, as long as the URL passed to download download, support ios and macos）
  
 ## 下载管理器实现的功能：(Download Manager to achieve the function:)
@@ -46,6 +48,9 @@ NSArray *list = @[
 9.修改最大的下载的任务数量 (Modify the maximum number of downloaded tasks)
  全局搜索 MAXTASK_COUNT 修改其值  默认最大任务数量是 3   (Global search MAXTASK_COUNT modify the value of the default maximum number of tasks is 3)
 ````
+## 期待(hope)
+- 有什么bug或者我不满足的需求，欢迎 Issues我(There are any bugs or I do not meet the demand, welcome to Issues I)
+- 请大神给我指正和建议，我将不盛荣幸。(Please God give me advice and suggestions, I will not be honored)
 
  
 
