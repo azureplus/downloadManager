@@ -69,6 +69,10 @@ NSArray *list = @[
  // 指定最大任务数量 需要在下载歌曲前指定否则不起作用,默认最大任务是3
     [MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
 ````
+- 修改默认的最大下载的任务数量 (Modify default the maximum number of downloaded tasks)
+````objc
+     search MAXTASK_COUNT ,update it
+````
 ## 期待(hope)
 - 有什么bug或者我不满足的需求，欢迎 Issues我(There are any bugs or I do not meet the demand, welcome to Issues I)
 - 请大神给我指正和建议，我将不盛荣幸。(Please God give me advice and suggestions, I will not be honored)
