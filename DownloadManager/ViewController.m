@@ -59,6 +59,9 @@ static NSString * const CELL_ID = @"cell_id";
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63273401896&ua=Mac_sst&version=1.0",
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"
                       ];
+    // 指定最大任务数量
+    [MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
+    
     for (NSString *downloadUrl in list) {
         [[MiguDowmloadBaseManager shareManager] downloadWithUrl:downloadUrl];
     }
@@ -71,7 +74,6 @@ static NSString * const CELL_ID = @"cell_id";
         [alertController addAction:okAction];
         [self presentViewController:alertController animated:YES completion:nil];
     }
-    
 }
 /**
  *
@@ -79,6 +81,10 @@ static NSString * const CELL_ID = @"cell_id";
  */
 - (IBAction)singleAction:(id)sender {
     [self.dataArray removeAllObjects];
+    
+    // 指定最大任务数量 需要在下载歌曲前指定否则不起作用
+    [MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
+    
     //  第一首歌曲
     [[MiguDowmloadBaseManager shareManager] downloadWithUrl:TEST_URL];
     [self.dataArray addObjectsFromArray:[MiguDowmloadBaseManager shareManager].downloadArray];
