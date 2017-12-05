@@ -30,22 +30,10 @@ static NSString * const CELL_ID = @"cell_id";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // 获得数据源
-    [self getData];
     // 创建tableview
     [self setUpTableView];
     // 创建观察者
     [self addObseerverAction];
-}
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    if ([MiguDowmloadBaseManager shareManager].downloadArray.count == 0) {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"歌曲已经都下载完了" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
-        [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
-    }
-    
 }
 #pragma mark - 方法的响应
 
@@ -56,14 +44,14 @@ static NSString * const CELL_ID = @"cell_id";
 - (void)setUpTableView {
     
     [self.tableView registerNib:[UINib nibWithNibName:@"downloadCell" bundle:nil] forCellReuseIdentifier:CELL_ID];
-    [self.tableView reloadData];
+    
 }
 /**
  *
- *  获得数据
+ *  全部下载
  */
-- (void)getData {
-    
+- (IBAction)downloadAllAction:(id)sender {
+    [self.dataArray removeAllObjects];
     NSArray *list = @[
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0",
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63880300430&ua=Mac_sst&version=1.0",
@@ -75,6 +63,33 @@ static NSString * const CELL_ID = @"cell_id";
         [[MiguDowmloadBaseManager shareManager] downloadWithUrl:downloadUrl];
     }
     [self.dataArray addObjectsFromArray:[MiguDowmloadBaseManager shareManager].downloadArray];
+    [self.tableView reloadData];
+    
+    if ([MiguDowmloadBaseManager shareManager].downloadArray.count == 0) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"歌曲已经都下载完了" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+}
+/**
+ *
+ *   单曲下载
+ */
+- (IBAction)singleAction:(id)sender {
+    [self.dataArray removeAllObjects];
+    //  第一首歌曲
+    [[MiguDowmloadBaseManager shareManager] downloadWithUrl:TEST_URL];
+    [self.dataArray addObjectsFromArray:[MiguDowmloadBaseManager shareManager].downloadArray];
+    [self.tableView reloadData];
+    
+    if ([MiguDowmloadBaseManager shareManager].downloadArray.count == 0) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"歌曲已经都下载完了" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
 }
 /**
  *
