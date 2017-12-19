@@ -19,10 +19,16 @@
 - cocoapod pod 'DownloadManager' ~>'0.0.2'
 - 注意macos 暂时不支持cocoapod  （Note that macos does not currently support cocoapod）
 ## 使用 （use）
+- 开始下载(单一) （Start downloading (single))
 ````objc
-1.开始下载(单一) （Start downloading (single))
+// 指定最大任务数量 需要在下载歌曲前指定否则不起作用,默认最大任务是3
+[MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
 [[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0"];
-2.批量下载 (Batch download)
+````
+- 批量下载 (Batch download)
+````objc
+// 指定最大任务数量 需要在下载歌曲前指定否则不起作用,默认最大任务是3
+[MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
 NSArray *list = @[
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0",
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63880300430&ua=Mac_sst&version=1.0",
@@ -33,20 +39,39 @@ NSArray *list = @[
     for (NSString *downloadUrl in list) {
         [[MiguDowmloadBaseManager shareManager] downloadWithUrl:downloadUrl];
     }
-3.暂停全部 (Pause all)
+````
+- 暂停全部 (Pause all)
+````objc
  [[MiguDowmloadBaseManager shareManager] suspendAllRequest];
-4.暂停某一链接 (Pause a link)
+````
+- 暂停某一链接 (Pause a link)
+````objc
 [[MiguDowmloadBaseManager shareManager] suspendWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"];
-5.取消全部 (Cancel all)
+````
+- 取消全部 (Cancel all)
+````objc
  [[MiguDowmloadBaseManager shareManager] cancelAllRequest];
-6.取消某一链接 (Cancel a link)
+````
+- 取消某一链接 (Cancel a link)
+````objc
  [[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"];
-7.恢复所有 (Restore all)
+````
+- 恢复所有 (Restore all)
+````objc
  [[MiguDowmloadBaseManager shareManager] resumeAllRequest];
-8.恢复一首链接 (Restore a link)
+````
+- 恢复一首链接 (Restore a link)
+````objc
  [[MiguDowmloadBaseManager shareManager] resumeWithSong:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"];
-9.修改最大的下载的任务数量 (Modify the maximum number of downloaded tasks)
- 全局搜索 MAXTASK_COUNT 修改其值  默认最大任务数量是 3   (Global search MAXTASK_COUNT modify the value of the default maximum number of tasks is 3)
+```` 
+- 修改最大的下载的任务数量 (Modify the maximum number of downloaded tasks)
+````objc
+ // 指定最大任务数量 需要在下载歌曲前指定否则不起作用,默认最大任务是3
+    [MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
+````
+- 修改默认的最大下载的任务数量 (Modify default the maximum number of downloaded tasks)
+````objc
+     search MAXTASK_COUNT ,update it
 ````
 ## 期待(hope)
 - 有什么bug或者我不满足的需求，欢迎 Issues我(There are any bugs or I do not meet the demand, welcome to Issues I)
