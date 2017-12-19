@@ -20,6 +20,7 @@
 		2C771F631FBED90F00C15BFB /* MiguFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C771F5C1FBED90F00C15BFB /* MiguFileManager.m */; };
 		2C771F641FBED90F00C15BFB /* MiguHttpConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C771F5E1FBED90F00C15BFB /* MiguHttpConfig.m */; };
 		2C771F651FBED90F00C15BFB /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C771F601FBED90F00C15BFB /* NSDataAdditions.m */; };
+		2CA3CD341FD0F3C800B72267 /* Simulator Screen Shot - iPhone 6s - 2017-12-01 at 10.03.44.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CA3CD331FD0F3C800B72267 /* Simulator Screen Shot - iPhone 6s - 2017-12-01 at 10.03.44.png */; };
 		6E35481AEA8BCD0BA146304E /* Pods_DownloadManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086CDC76E7D7DE7546CDB882 /* Pods_DownloadManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		2C771F5E1FBED90F00C15BFB /* MiguHttpConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiguHttpConfig.m; sourceTree = "<group>"; };
 		2C771F5F1FBED90F00C15BFB /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
 		2C771F601FBED90F00C15BFB /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
+		2CA3CD331FD0F3C800B72267 /* Simulator Screen Shot - iPhone 6s - 2017-12-01 at 10.03.44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 6s - 2017-12-01 at 10.03.44.png"; sourceTree = "<group>"; };
 		BEB347E02627E7446A1888AE /* Pods-DownloadManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DownloadManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-DownloadManager/Pods-DownloadManager.release.xcconfig"; sourceTree = "<group>"; };
 		DEEDD32F3412EF5060E10CA5 /* Pods-DownloadManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DownloadManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DownloadManager/Pods-DownloadManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 				2C771F561FBED90F00C15BFB /* DownloadManagers */,
 				2C771F2A1FBEBC2C00C15BFB /* DownloadManager */,
 				2C771F291FBEBC2C00C15BFB /* Products */,
+				2CA3CD331FD0F3C800B72267 /* Simulator Screen Shot - iPhone 6s - 2017-12-01 at 10.03.44.png */,
 				70DFDD1FF0210C69E47F2B90 /* Pods */,
 				6701A6D60325CEC170F65834 /* Frameworks */,
 			);
@@ -197,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CA3CD341FD0F3C800B72267 /* Simulator Screen Shot - iPhone 6s - 2017-12-01 at 10.03.44.png in Resources */,
 				2C771F381FBEBC2C00C15BFB /* LaunchScreen.storyboard in Resources */,
 				2C771F551FBEC18600C15BFB /* downloadCell.xib in Resources */,
 				2C771F351FBEBC2C00C15BFB /* Assets.xcassets in Resources */,

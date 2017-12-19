@@ -8,21 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import "MiguDownloadItem.h"
-
-
 #define  MAXTASK_COUNT  3
 
 @interface MiguDowmloadBaseManager : NSObject
 
 + (instancetype)shareManager;
 #pragma mark - 重写相关的属性
+/** 最大任务数量*/
+@property (nonatomic, assign) int maxTaskCount;
 // 存放需要下载的数组
 @property (nonatomic, strong) NSMutableArray *downloadArray;
 /**
  *
  *    开始下载
  */
-- (void)downloadWithUrl:(NSString *)downloadUrl;
+- (void)downloadWithUrl:(NSString *)downloadUrl withCustomCacheName:(NSString *)customCacheName;
 /**
  *
  *    暂停某一首歌曲

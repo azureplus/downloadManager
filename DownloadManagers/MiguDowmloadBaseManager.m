@@ -73,7 +73,7 @@
  *
  *   获取缓存的文件夹的路径
  */
-- (NSString *)getCache:(NSString *)downloadUrl withResponse:(NSURLResponse *)response{
+- (NSString *)getCache:(NSString *)downloadUrl withResponse:(NSURLResponse *)response customCahceName:(NSString *)customCacheName{
     
     if (downloadUrl.length <= 0) {
         return nil;
@@ -86,7 +86,11 @@
     // 方案一 用服务建议的方法命名
 //    cachePath = [cachePath stringByAppendingPathComponent:response.suggestedFilename];
     // 方案二 自己用md5 或者其他的方式加密命名
-    cachePath = [cachePath stringByAppendingPathComponent:[[[downloadUrl dataUsingEncoding:NSUTF8StringEncoding] tk_MD5HashString] stringByAppendingString:@".download"]];
+    if (customCacheName.length > 0) {
+        cachePath = [cachePath stringByAppendingPathComponent:customCacheName];
+    }else {
+        cachePath = [cachePath stringByAppendingPathComponent:[[[downloadUrl dataUsingEncoding:NSUTF8StringEncoding] tk_MD5HashString] stringByAppendingString:@".download"]];
+    }
     if (![fileManager fileExistsAtPath:cachePath]) {
         [fileManager createFileAtPath:cachePath contents:nil attributes:nil];
     }
@@ -111,7 +115,7 @@
  *
  *    开始下载
  */
-- (void)downloadWithUrl:(NSString *)downloadUrl {
+- (void)downloadWithUrl:(NSString *)downloadUrl withCustomCacheName:(NSString *)customCacheName{
    
     if (downloadUrl.length == 0) {
         return;
@@ -124,9 +128,10 @@
         item.requestUrl = downloadUrl;
         item.downloadStatus = MiguDownloadStatusWaiting;
         item.progress = 0.0;
+        item.customCacheName = customCacheName;
         item.temPath = [self getTemPath:downloadUrl];
         // 方案二需要这样写
-        item.cachePath = [self getCache:downloadUrl withResponse:nil];
+        item.cachePath = [self getCache:downloadUrl withResponse:nil customCahceName:customCacheName];
         item.requestMethod = @"GET";
         item.paramDic = nil;
         // 已经下载的就不用下载了
@@ -150,7 +155,10 @@
         if (item.downloadStatus == MiguDownloadStatusDownloading) {
             downloadingCount ++;
         }
-        if (downloadingCount >= MAXTASK_COUNT) {
+        if (self.maxTaskCount == 0) {
+            self.maxTaskCount = MAXTASK_COUNT;
+        }
+        if (downloadingCount >= self.maxTaskCount) {
             flag = NO;
             break;
         }
@@ -159,7 +167,10 @@
     if (flag) {
         for (MiguDownloadItem *item in _downloadArray) {
             if (item.downloadStatus == MiguDownloadStatusWaiting) {
-                if (MAXTASK_COUNT - downloadingCount > 0) {
+                if (self.maxTaskCount == 0) {
+                    self.maxTaskCount = MAXTASK_COUNT;
+                }
+                if (self.maxTaskCount - downloadingCount > 0) {
                     NSLog(@"开始任务了");
                     [self beginDownloadWithItem:item];
                     downloadingCount ++;
@@ -232,7 +243,7 @@
         }else {
             item.downloadStatus = MiguDownloadStatusDownloadFinish;
             // 这个路径要根据自己的实际情况处理
-            item.cachePath = [weakSelf getCache:item.requestUrl withResponse:response];
+            item.cachePath = [weakSelf getCache:item.requestUrl withResponse:response customCahceName:item.customCacheName];
             NSLog(@"下载成功 -- 成功的文件的路径是%@",item.cachePath);
             // 删除文件
             [[NSFileManager defaultManager] removeItemAtPath:item.cachePath error:nil];
@@ -292,7 +303,7 @@
  *
  *   恢复下载一首歌曲
  */
-- (void)resumeWithUrl:(NSString *)url{
+- (void)resumeWithUrl:(NSString *)url {
     if (url.length == 0) {
         return;
     }

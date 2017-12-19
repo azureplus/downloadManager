@@ -24,30 +24,31 @@ typedef NS_ENUM(NSUInteger,MiguDownloadStatus) {
 };
 
 @interface MiguDownloadItem : NSObject
-
-//   请求的url
+/** 下载的自定义的缓存文件名*/
+@property (nonatomic, copy) NSString *customCacheName;
+/**请求的url */
 @property (nonatomic, copy) NSString *requestUrl;
-//   下载的任务
+/**下载的任务 */
 @property (nonatomic, strong) NSURLSessionTask *task;
-//   管理者
+/** 管理者 */
 @property (nonatomic, strong) AFHTTPSessionManager *manager;
-//   下载的状态
+/**下载的状态 */
 @property (nonatomic, assign) MiguDownloadStatus downloadStatus;
-//   返回的response
+/**返回的response */
 @property (nonatomic, strong) NSURLResponse *response;
-//   错误的信息
+/** 错误的信息 */
 @property (nonatomic, strong) NSError *error;
-//   下载的进度
+/**下载的进度 */
  @property (nonatomic, assign) CGFloat progress;
-//   临时存储的文件路径
+/**临时存储的文件路径 */
  @property (nonatomic, copy) NSString *temPath;
-//   缓存的文件的路径
+/**缓存的文件的路径 */
  @property (nonatomic, copy) NSString *cachePath;
-//   请求的方法
+/**请求的方法 */
 @property (nonatomic, copy) NSString *requestMethod;
-//   参数
+/** 参数 */
 @property (nonatomic, strong) NSDictionary *paramDic;
-//   NSFileHandle
+/**NSFileHandle */
 @property (nonatomic, strong) NSFileHandle *itemFileHandle;
 //   下载进度的block
 @property (nonatomic, strong) void (^MiguDownloadProgressBlock)(CGFloat progress);
