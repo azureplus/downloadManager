@@ -23,12 +23,16 @@
 ````objc
 // 指定最大任务数量 需要在下载歌曲前指定否则不起作用,默认最大任务是3
 [MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
-[[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0"];
+// 其中小不点.mp3为自定义的名字，可以为nil（Which 小不点.mp3 is a custom name, can be nil）
+[MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
+[[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0" withCustomCacheName:@"小不点.mp3"];
+
 ````
 - 批量下载 (Batch download)
 ````objc
 // 指定最大任务数量 需要在下载歌曲前指定否则不起作用,默认最大任务是3
 [MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
+NSArray *customCacheName = @[@"上海滩.mp3",@"大长今.mp3",@"日子.mp3",@"想一想.mp3",@"哈哈.mp3"];
 NSArray *list = @[
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0",
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63880300430&ua=Mac_sst&version=1.0",
@@ -37,7 +41,8 @@ NSArray *list = @[
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"
                       ];
     for (NSString *downloadUrl in list) {
-        [[MiguDowmloadBaseManager shareManager] downloadWithUrl:downloadUrl];
+    // customCacheName can nil 
+        [[MiguDowmloadBaseManager shareManager] downloadWithUrl:list[index] withCustomCacheName:customCacheName[index]];
     }
 ````
 - 暂停全部 (Pause all)
