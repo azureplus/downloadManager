@@ -77,6 +77,13 @@ NSArray *list = @[
 ````objc
      search MAXTASK_COUNT ,update it
 ````
+## 注意点（pay attention）
+.需要手动修改 (need modify)
+```objc
+        //  输入自己项目的方式，下边是我自己项目默认的(Enter your own project, the following is my own project default)
+        item.requestMethod = @"GET";
+        item.paramDic = nil;
+````
 ## 期待(hope)
 - 有什么bug或者我不满足的需求，欢迎 Issues我(There are any bugs or I do not meet the demand, welcome to Issues I)
 - 请大神给我指正和建议，我将不盛荣幸。(Please God give me advice and suggestions, I will not be honored)
