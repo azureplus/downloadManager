@@ -24,7 +24,6 @@
 // 指定最大任务数量 需要在下载歌曲前指定否则不起作用,默认最大任务是3
 [MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
 // 其中小不点.mp3为自定义的名字，可以为nil（Which 小不点.mp3 is a custom name, can be nil）
-[MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
 [[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0" withCustomCacheName:@"小不点.mp3"];
 
 ````
