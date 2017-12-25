@@ -24,7 +24,7 @@
 // 指定最大任务数量 需要在下载歌曲前指定否则不起作用,默认最大任务是3
 [MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
 // 其中小不点.mp3为自定义的名字，可以为nil（Which 小不点.mp3 is a custom name, can be nil）
-[[MiguDowmloadBaseManager shareManager] downloadWithUrl:@"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=6990539Z0K8&ua=Mac_sst&version=1.0" withCustomCacheName:@"小不点.mp3"];
+[[MiguDowmloadBaseManager shareManager] downloadWithUrl:TEST_URL withMethod:@"GET" withParma:nil withCustomCacheName:@"小不点.mp3"];
 
 ````
 - 批量下载 (Batch download)
@@ -39,10 +39,9 @@ NSArray *list = @[
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=63273401896&ua=Mac_sst&version=1.0",
                       @"http://218.200.160.29/rdp2/test/mac/listen.do?contentid=69906300114&ua=Mac_sst&version=1.0"
                       ];
-    for (NSString *downloadUrl in list) {
-    // customCacheName can nil 
-        [[MiguDowmloadBaseManager shareManager] downloadWithUrl:list[index] withCustomCacheName:customCacheName[index]];
-    }
+    for (NSInteger index = 0; index < list.count; index ++) {
+        [[MiguDowmloadBaseManager shareManager] downloadWithUrl:list[index] withMethod:@"GET" withParma:nil withCustomCacheName:customCacheName[index]];
+    };
 ````
 - 暂停全部 (Pause all)
 ````objc
@@ -76,13 +75,6 @@ NSArray *list = @[
 - 修改默认的最大下载的任务数量 (Modify default the maximum number of downloaded tasks)
 ````objc
      search MAXTASK_COUNT ,update it
-````
-## 注意点（pay attention）
-.需要手动修改 (need modify)
-```objc
-        //  输入自己项目的方式，下边是我自己项目默认的(Enter your own project, the following is my own project default)
-        item.requestMethod = @"GET";
-        item.paramDic = nil;
 ````
 ## 期待(hope)
 - 有什么bug或者我不满足的需求，欢迎 Issues我(There are any bugs or I do not meet the demand, welcome to Issues I)
