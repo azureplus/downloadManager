@@ -76,6 +76,23 @@ NSArray *list = @[
 ````objc
      search MAXTASK_COUNT ,update it
 ````
+- 获取下载进度(Get download progress)
+````objc
+   // 需要自己获取当前下载的item(Need to get the current download item)
+  item.MiguDownloadProgressBlock = ^(CGFloat progress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            weakSelf.progressView.progress = progress;
+            weakSelf.progressLable.text = [NSString stringWithFormat:@"%d%%",(int)(progress *100)];
+        });
+    };
+````
+- 获取下载的状态(Get the status of the download)
+````objc
+   // 需要自己获取当前下载的item(Need to get the current download item)
+   item.downloadStatus
+````
+
+
 ## 期待(hope)
 - 有什么bug或者我不满足的需求，欢迎 Issues我(There are any bugs or I do not meet the demand, welcome to Issues I)
 - 请大神给我指正和建议，我将不盛荣幸。(Please God give me advice and suggestions, I will not be honored)
