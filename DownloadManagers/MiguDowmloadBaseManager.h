@@ -22,7 +22,7 @@
  *
  *    开始下载
  */
-- (void)downloadWithUrl:(NSString *)downloadUrl withCustomCacheName:(NSString *)customCacheName;
+- (void)downloadWithUrl:(NSString *)downloadUrl withMethod:(NSString *)requestMethod withParma:(NSMutableDictionary *)parmaDic withCustomCacheName:(NSString *)customCacheName;
 /**
  *
  *    暂停某一首歌曲

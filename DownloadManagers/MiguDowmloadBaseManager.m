@@ -115,7 +115,7 @@
  *
  *    开始下载
  */
-- (void)downloadWithUrl:(NSString *)downloadUrl withCustomCacheName:(NSString *)customCacheName{
+- (void)downloadWithUrl:(NSString *)downloadUrl withMethod:(NSString *)requestMethod withParma:(NSMutableDictionary *)parmaDic withCustomCacheName:(NSString *)customCacheName{
    
     if (downloadUrl.length == 0) {
         return;
@@ -132,8 +132,8 @@
         item.temPath = [self getTemPath:downloadUrl];
         // 方案二需要这样写
         item.cachePath = [self getCache:downloadUrl withResponse:nil customCahceName:customCacheName];
-        item.requestMethod = @"GET";
-        item.paramDic = nil;
+        item.requestMethod = requestMethod;
+        item.paramDic = parmaDic;
         // 已经下载的就不用下载了
         if ([[NSFileManager defaultManager] attributesOfItemAtPath:item.cachePath error:nil].fileSize <= 0) {
           [self.downloadArray addObject:item];

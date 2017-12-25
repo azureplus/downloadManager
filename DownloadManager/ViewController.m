@@ -67,7 +67,7 @@ static NSString * const CELL_ID = @"cell_id";
 //        [[MiguDowmloadBaseManager shareManager] downloadWithUrl:downloadUrl withCustomCacheName:nil];
 //    }
     for (NSInteger index = 0; index < list.count; index ++) {
-        [[MiguDowmloadBaseManager shareManager] downloadWithUrl:list[index] withCustomCacheName:customCacheName[index]];
+        [[MiguDowmloadBaseManager shareManager] downloadWithUrl:list[index] withMethod:@"GET" withParma:nil withCustomCacheName:customCacheName[index]];
     }
     
     [self.dataArray addObjectsFromArray:[MiguDowmloadBaseManager shareManager].downloadArray];
@@ -91,7 +91,7 @@ static NSString * const CELL_ID = @"cell_id";
     [MiguDowmloadBaseManager shareManager].maxTaskCount = 2;
     
     //  第一首歌曲
-    [[MiguDowmloadBaseManager shareManager] downloadWithUrl:TEST_URL withCustomCacheName:@"小不点.mp3"];
+    [[MiguDowmloadBaseManager shareManager] downloadWithUrl:TEST_URL withMethod:@"GET" withParma:nil withCustomCacheName:@"小不点.mp3"];
     [self.dataArray addObjectsFromArray:[MiguDowmloadBaseManager shareManager].downloadArray];
     [self.tableView reloadData];
     
